@@ -2,32 +2,35 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-const [height, setHeight] = useState(0)
-const [weight, setWeight] = useState(0)
-const [bmIndex, setBMIndex] = useState(0)
+const [age, setAge] = useState(0)
+const [lowerLim, setLowerLim] = useState(0)
+const [upperLim, setUpperLim] = useState(0)
 
 function calculate(e){
   e.preventDefault()
-  setLowerLim(weight/(height*height))
-  setUpperLim(weight/(height*height))
+  setLowerLim((220-age)*0.65)
+  setUpperLim((220-age)*0.85)
 }
 
 
   return (
     <div id="content">
-      <h1>Calculating body mass</h1>
+      <h1>Heart rate limits calculator</h1>
       <form onSubmit={calculate}>
         <div>
-          <label>Height(m)</label>
-          <input value={height} onChange={e => setHeight(e.target.value)} />
+          <label>Age</label>
+          </div>
+          <div>
+          <input value={age} onChange={e => setAge(e.target.value)} />
         </div>
+
         <div>
-          <label>Weight</label>
-          <input value={weight} onChange={e => setWeight(e.target.value)}/>
-        </div>
-        <div id="bmi">
-          <output>{bmIndex}</output>
-        </div>
+          <label>Heart rate limits</label>
+          </div>
+          <div>
+          <output>{lowerLim}-{upperLim}</output>
+          </div>
+        
         <button>Calculate!</button>
       </form>
     </div>
