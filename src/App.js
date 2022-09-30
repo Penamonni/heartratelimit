@@ -28,7 +28,7 @@ function calculate(e){
           <label>Heart rate limits</label>
           </div>
           <div>
-          <output>{lowerLim}-{upperLim}</output>
+          <output>{lowerLim.toFixed(2)}-{upperLim.toFixed(2)}</output>
           </div>
         
         <button>Calculate!</button>
