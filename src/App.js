@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+const [height, setHeight] = useState(0)
+const [weight, setWeight] = useState(0)
+const [bmIndex, setBMIndex] = useState(0)
+
+function calculate(e){
+  e.preventDefault()
+  setLowerLim(weight/(height*height))
+  setUpperLim(weight/(height*height))
+}
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="content">
+      <h1>Calculating body mass</h1>
+      <form onSubmit={calculate}>
+        <div>
+          <label>Height(m)</label>
+          <input value={height} onChange={e => setHeight(e.target.value)} />
+        </div>
+        <div>
+          <label>Weight</label>
+          <input value={weight} onChange={e => setWeight(e.target.value)}/>
+        </div>
+        <div id="bmi">
+          <output>{bmIndex}</output>
+        </div>
+        <button>Calculate!</button>
+      </form>
     </div>
   );
 }
